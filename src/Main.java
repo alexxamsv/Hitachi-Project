@@ -1,4 +1,4 @@
-import javax.mail.MessagingException;
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 
 public class Main {
-    public static void main(String[] args) throws IOException, MessagingException {
+    public static void main(String[] args) throws IOException {
         Scanner scanner = new Scanner(System.in);
         //The application should take 4 input parameters – File name (path to the file on the file system), Sender email address, Password, Receiver email address.
 
@@ -28,6 +28,12 @@ public class Main {
             System.out.println("Please enter 4 arguments");
             System.exit(0);
         }
+
+        if (!Files.exists(Paths.get(fileName))) {
+            System.out.println("File does not exist");
+            System.exit(0);
+        }
+        //hello, Alex!
 
 
         List<String> fileLines = readFile(fileName);
